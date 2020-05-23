@@ -1,9 +1,13 @@
 FROM golang:1.12-alpine as builder
 COPY . /go/src/github.com/fahernandez/go-linter-test-error-handling
-WORKDIR /go/src/github.com//fahernandezgo-linter-test-error-handling
+WORKDIR /go/src/github.com/fahernandez/go-linter-test-error-handling
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o go-linter-test-error-handling main.go
 
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o first-app main.go
+FROM alpine:3.10
+RUN apk add --no-cache --update ca-certificates curl tzdata && rm -rf /var/cache/apk/*
 
-RUN ls /go/src/github.com/fahernandez/go-linter-test-error-handling
-RUN chmod +x /go/src/github.com/fahernandez/go-linter-test-error-handling
-ENTRYPOINT ["/go/src/github.com/fahernandez/go-linter-test-error-handling"]
+COPY --from=builder /go/src/github.com/fahernandez/go-linter-test-error-handling/go-linter-test-error-handling /go-linter-test-error-handling
+
+ENTRYPOINT ["/go-linter-test-error-handling"]
+EXPOSE 8017
+EXPOSE 8018

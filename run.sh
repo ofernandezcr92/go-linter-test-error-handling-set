@@ -21,6 +21,7 @@ function script_usage() {
 Usage: ./run.sh COMMAND
 Commands:
     help -h --help             Displays this help
+    build                      Run the project build
     lint                       Run the project linters
     execute                    Execute the project
 EOF
@@ -40,6 +41,10 @@ function parse_params() {
         param="$1"
         shift
         case $param in
+            build)
+                build "${@:1}"
+                exit 0
+                ;;
             lint)
                 lint "${@:1}"
                 exit 0
@@ -73,6 +78,12 @@ function lint() {
 # DESC: Run the project
 function execute() {
     docker run -it --rm fahernandez/go-linter-test-error-handling
+}
+
+# DESC: Run the project build
+# ARGS: $@ (optional): Arguments provided to the script
+function build() {
+    docker-compose -f docker-compose.yml --project-name go-linter-test-error-handling build "$@"
 }
 
 # DESC: Main control flow
