@@ -16,12 +16,7 @@ Note: Don't forget to define $GOROOT AND $GOPATH env variables
 go get -u github.com/fahernandez/go-linter-test-error-handling
 ``
 
-2. Build the image
-``
-./run.sh build
-``
-
-3. Execute the example
+3. Build and execute the example
 ``
 ./run.sh exec
 ``
