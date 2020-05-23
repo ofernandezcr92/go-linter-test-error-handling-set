@@ -23,7 +23,7 @@ Commands:
     help -h --help             Displays this help
     build                      Run the project build
     lint                       Run the project linters
-    execute                    Execute the project
+    exec                    exec the project
 EOF
 }
 
@@ -49,8 +49,8 @@ function parse_params() {
                 lint "${@:1}"
                 exit 0
                 ;;
-            execute)
-                execute
+            exec)
+                exec
                 exit 0
                 ;;
             help|-h|--help)
@@ -76,7 +76,8 @@ function lint() {
 }
 
 # DESC: Run the project
-function execute() {
+function exec() {
+    build
     docker run -it --rm fahernandez/go-linter-test-error-handling
 }
 

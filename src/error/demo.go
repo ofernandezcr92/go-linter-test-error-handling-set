@@ -10,17 +10,12 @@
  */
 // Package linter contains the examples shown on Golang Costa Rica meetup
 // https://www.meetup.com/Golang-Costa-Rica/events/270127485/
-package linter
+package error
 
 import "fmt"
 
 func Demo() {
 	// this command must be linted by go vet
 	// v := 10 //-> go vet -assign main.go -> go vet -all
-	fmt.Printf("Golang linter demo code\n")
+	fmt.Printf("Golang error handling demo code\n")
 }
-
-// this function must be linted by ./run.sh lint(golangci-lint)
-// func noUsed() {
-
-// }
