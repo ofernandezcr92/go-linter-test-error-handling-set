@@ -1,5 +1,5 @@
 # Golang tests, linters and error handling
-Repository made for second meetup of Golang Costa Rica
+Repository made for the secon Golang Costa Rica meetup.
 
 # Getting started
 
