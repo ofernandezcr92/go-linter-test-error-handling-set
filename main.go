@@ -1,4 +1,4 @@
-/**                   _
+/**
  *  _             _ _| |_
  * | |           | |_   _|
  * | |___  _   _ | | |_|
@@ -11,6 +11,10 @@
 
 package main
 
-func main() {
+import (
+	"github.com/fahernandez/go-linter-test-error-handling/src/linter"
+)
 
+func main() {
+	linter.Demo()
 }
