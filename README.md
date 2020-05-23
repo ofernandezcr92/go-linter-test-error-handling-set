@@ -18,12 +18,12 @@ go get -u github.com/fahernandez/go-linter-test-error-handling
 
 2. Build the image
 ``
-docker-compose build
+./run.sh build
 ``
 
 3. Execute the example
 ``
-./run.sh execute
+./run.sh exec
 ``
 
 4. Enjoy!!
