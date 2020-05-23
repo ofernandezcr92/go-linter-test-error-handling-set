@@ -9,5 +9,3 @@ RUN apk add --no-cache --update ca-certificates curl tzdata && rm -rf /var/cache
 COPY --from=builder /go/src/github.com/fahernandez/go-linter-test-error-handling/go-linter-test-error-handling /go-linter-test-error-handling
 
 ENTRYPOINT ["/go-linter-test-error-handling"]
-EXPOSE 8017
-EXPOSE 8018
