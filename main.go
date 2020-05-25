@@ -12,11 +12,11 @@
 package main
 
 import (
-	"github.com/fahernandez/go-linter-test-error-handling/src/error"
+	de "github.com/fahernandez/go-linter-test-error-handling/src/error"
 	"github.com/fahernandez/go-linter-test-error-handling/src/linter"
 )
 
 func main() {
 	linter.Demo()
-	error.Demo()
+	de.Demo()
 }
