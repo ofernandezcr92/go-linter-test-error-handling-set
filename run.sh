@@ -23,7 +23,8 @@ Commands:
     help -h --help             Displays this help
     build                      Run the project build
     lint                       Run the project linters
-    exec                    exec the project
+    exec                       Execute the project
+    test                       Runs all the project tests, optionally provide flag to ignore build ./run.sh test ignore
 EOF
 }
 
@@ -47,6 +48,10 @@ function parse_params() {
                 ;;
             lint)
                 lint "${@:1}"
+                exit 0
+                ;;
+            test)
+                test "${@:1}"
                 exit 0
                 ;;
             exec)
@@ -85,6 +90,12 @@ function exec() {
 # ARGS: $@ (optional): Arguments provided to the script
 function build() {
     docker-compose -f docker-compose.yml --project-name go-linter-test-error-handling build "$@"
+}
+
+# DESC: Run the tests
+# ARGS: $@ (optional): Arguments provided to the script
+function test() {
+    docker run --rm -t -e TEST_ENV=docker -v `pwd`:/go/src/github.com/fahernandez/"$(basename `pwd`)" -w /go/src/github.com/fahernandez/"$(basename `pwd`)" huli/golang sh -c "richgo test -race -coverpkg=./... -coverprofile=coverage.out -v ./... && go tool cover -func=coverage.out | grep total: && go tool cover -html=coverage.out -o coverage.html"
 }
 
 # DESC: Main control flow

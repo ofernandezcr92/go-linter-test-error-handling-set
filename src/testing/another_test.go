@@ -1,6 +1,6 @@
 // +build anothertest
 
-package main
+package testing
 
 import "testing"
 
