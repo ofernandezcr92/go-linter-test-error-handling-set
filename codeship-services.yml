@@ -10,6 +10,16 @@ golang:
     - .:/go/src/github.com/fahernandez/go-linter-test-error-handling
   working_dir: /go/src/github.com/fahernandez/go-linter-test-error-handling
 
+gotest:
+  image: golang:1.13-alpine
+  environment:
+    - TEST_ENV=docker
+  depends_on:
+    - go-linter-test-error-handling
+  volumes:
+    - .:/go/src/github.com/fahernandez/go-linter-test-error-handling
+  working_dir: /go/src/github.com/fahernandez/go-linter-test-error-handling
+
 go-linter-test-error-handling:
   build:
     context: .

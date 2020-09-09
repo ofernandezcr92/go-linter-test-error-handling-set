@@ -3,3 +3,7 @@
     - service: golangci-lint
       command: golangci-lint run --timeout=2m -E=golint -E=gosec -E=dupl -E=gocyclo -E=goconst -E=goimports -E=misspell -E=maligned -E=unconvert -E=prealloc
       name: golangci-lint
+    - service: gotest
+      command: /bin/sh -c "go test -coverpkg=./... -v ./..."
+      encrypted_dockercfg_path: codeship-dockercfg.encrypted
+      name: go test
