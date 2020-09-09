@@ -12,13 +12,12 @@
 // https://www.meetup.com/Golang-Costa-Rica/events/270127485/
 package testing
 
-import "fmt"
-
 func Sum(x, y int) int {
 	return x + y
 }
 
-func main() {
-	sum := Sum(4, 5)
-	fmt.Println(sum)
-}
+//
+//func main() {
+//	sum := Sum(4, 5)
+//	fmt.Println(sum)
+//}

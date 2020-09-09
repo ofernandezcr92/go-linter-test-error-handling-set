@@ -1,0 +1,17 @@
+- type: parallel
+  steps:
+    - service: golangci-lint
+      command: golangci-lint run --timeout=2m -E=golint -E=gosec -E=dupl -E=gocyclo -E=goconst -E=goimports -E=misspell -E=maligned -E=unconvert -E=prealloc
+      name: golangci-lint
+    - service: gotest
+      command: /bin/sh -c "go test -coverpkg=./... -v ./..."
+      encrypted_dockercfg_path: codeship-dockercfg.encrypted
+      name: go test
+
+- service: go-linter-test-error-handling
+  encrypted_dockercfg_path: codeship-dockercfg.encrypted
+  image_name: ofernandez/go-linter-test-error-handling
+  image_tag: latest
+  name: docker push latest
+  tag: master
+  type: push
