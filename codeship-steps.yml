@@ -1,0 +1,5 @@
+- type: parallel
+  steps:
+    - service: golangci-lint
+      command: golangci-lint run --timeout=2m -E=golint -E=gosec -E=dupl -E=gocyclo -E=goconst -E=goimports -E=misspell -E=maligned -E=unconvert -E=prealloc
+      name: golangci-lint

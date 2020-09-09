@@ -1,0 +1,18 @@
+golangci-lint:
+  image: golangci/golangci-lint:v1.23.8
+  volumes:
+    - .:/go/src/github.com/fahernandez/go-linter-test-error-handling
+  working_dir: /go/src/github.com/fahernandez/go-linter-test-error-handling
+
+golang:
+  image: golang:1.13-alpine
+  volumes:
+    - .:/go/src/github.com/fahernandez/go-linter-test-error-handling
+  working_dir: /go/src/github.com/fahernandez/go-linter-test-error-handling
+
+go-linter-test-error-handling:
+  build:
+    context: .
+    dockerfile: Dockerfile
+    image: fabianhnz/go-linter-test-error-handling
+  cached: true
