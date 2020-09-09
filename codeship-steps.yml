@@ -7,3 +7,11 @@
       command: /bin/sh -c "go test -coverpkg=./... -v ./..."
       encrypted_dockercfg_path: codeship-dockercfg.encrypted
       name: go test
+
+- service: go-linter-test-error-handling
+  encrypted_dockercfg_path: codeship-dockercfg.encrypted
+  image_name: ofernandez/go-linter-test-error-handling
+  image_tag: latest
+  name: docker push latest
+  tag: master
+  type: push
